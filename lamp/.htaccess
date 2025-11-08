@@ -1,0 +1,7 @@
+# Verhindert Verzeichnislisting
+Options -Indexes
+
+# Schützt INI-Dateien (falls versehentlich im Webroot)
+<FilesMatch "\.ini$">
+  Require all denied
+</FilesMatch>

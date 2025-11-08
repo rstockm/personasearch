@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dokumentation - Persona Search</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link href="css/style.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f0f0f0;
+        }
+        pre {
+            background-color: #ffffff;
+            padding: 1rem;
+            border-radius: 0.5rem;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container">
+            <a class="navbar-brand" href="/">Persona Search</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item me-2">
+                        <a class="btn btn-outline-light" href="/">
+                            <i class="bi bi-search me-1"></i>Zur Suche
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="btn btn-light" href="/docs.html">
+                            <i class="bi bi-file-text me-1"></i>Dokumentation
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-lg-10 offset-lg-1">
+                <h1 class="mb-4">Dokumentation</h1>
+                
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h2 class="h5 mb-0">
+                            <i class="bi bi-search me-2"></i>Suchfunktionen
+                        </h2>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="h6">Verfügbare Tabs</h3>
+                        <ul class="list-group mb-4">
+                            <li class="list-group-item">
+                                <i class="bi bi-book me-2"></i><strong>Titel</strong>
+                                <br>
+                                <small class="text-muted">API: OpenLibrary - /search.json?title=</small>
+                                <br>
+                                <small class="text-muted">Sucht nach Büchern mit dem angegebenen Titel, zeigt Cover-Vorschau</small>
+                            </li>
+                            <li class="list-group-item">
+                                <i class="bi bi-person me-2"></i><strong>Autor</strong>
+                                <br>
+                                <small class="text-muted">API: OpenLibrary - /search.json?author=</small>
+                                <br>
+                                <small class="text-muted">Sucht nach Büchern des angegebenen Autors, zeigt Cover-Vorschau</small>
+                            </li>
+                            <li class="list-group-item">
+                                <i class="bi bi-tags me-2"></i><strong>Genre</strong>
+                                <br>
+                                <small class="text-muted">API: OpenLibrary - /search.json?subject=</small>
+                                <br>
+                                <small class="text-muted">Sucht nach Büchern eines bestimmten Genres, zeigt Cover-Vorschau und Genres</small>
+                            </li>
+                            <li class="list-group-item">
+                                <i class="bi bi-search me-2"></i><strong>Erweitert</strong>
+                                <br>
+                                <small class="text-muted">API: OpenLibrary - /search.json?q=</small>
+                                <br>
+                                <small class="text-muted">Kombinierte Suche nach Titel, Autor und Genre, zeigt Cover-Vorschau</small>
+                            </li>
+                            <li class="list-group-item">
+                                <i class="bi bi-film me-2"></i><strong>Film</strong>
+                                <br>
+                                <small class="text-muted">API: TMDB - /search/multi</small>
+                                <br>
+                                <small class="text-muted">Sucht nach Filmen und TV-Serien, zeigt Bewertungen und Links zu TMDB</small>
+                            </li>
+                        </ul>
+
+                        <h3 class="h6">Besondere Features</h3>
+                        <ul class="list-group">
+                            <li class="list-group-item">
+                                <i class="bi bi-image me-2"></i><strong>Cover-Vorschau</strong>
+                                <br>
+                                <small class="text-muted">Kleine Thumbnails in der Tabelle, größere Vorschau beim Hover</small>
+                            </li>
+                            <li class="list-group-item">
+                                <i class="bi bi-sort-down me-2"></i><strong>Intelligente Sortierung</strong>
+                                <br>
+                                <small class="text-muted">Automatische Erkennung von Datums-Sortierung bei Begriffen wie "neu" oder "aktuell"</small>
+                            </li>
+                            <li class="list-group-item">
+                                <i class="bi bi-shield-check me-2"></i><strong>Fehlerbehandlung</strong>
+                                <br>
+                                <small class="text-muted">Robuste Fehlerbehandlung mit Retry-Logik und Fallback-Icons für fehlende Cover</small>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h2 class="h5 mb-0">
+                            <i class="bi bi-robot me-2"></i>KI-Integration
+                        </h2>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="h6">Aktueller System-Prompt</h3>
+                        <pre class="mb-4" id="systemPrompt">Wird geladen...</pre>
+
+                        <h3 class="h6">Verwendetes Modell</h3>
+                        <p>Claude 3.5 Sonnet (via OpenRouter)</p>
+                    </div>
+                </div>
+
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h2 class="h5 mb-0">
+                            <i class="bi bi-gear me-2"></i>Technische Details
+                        </h2>
+                    </div>
+                    <div class="card-body">
+                        <h3 class="h6">APIs</h3>
+                        <ul class="list-unstyled">
+                            <li class="mb-3">
+                                <strong>OpenLibrary</strong>
+                                <br>
+                                <small class="text-muted">Kostenlose API für Buchsuche und Cover-Bilder</small>
+                                <br>
+                                <small class="text-muted">Endpunkte: /search.json, covers.openlibrary.org</small>
+                                <br>
+                                <a href="https://openlibrary.org/developers/api" target="_blank" class="small">
+                                    Dokumentation <i class="bi bi-box-arrow-up-right"></i>
+                                </a>
+                            </li>
+                            <li class="mb-3">
+                                <strong>TMDB (The Movie Database)</strong>
+                                <br>
+                                <small class="text-muted">Film- und Serien-API mit Bearer Token Authentifizierung</small>
+                                <br>
+                                <small class="text-muted">Endpunkt: /search/multi für kombinierte Film- und Seriensuche</small>
+                                <br>
+                                <a href="https://developer.themoviedb.org/docs" target="_blank" class="small">
+                                    Dokumentation <i class="bi bi-box-arrow-up-right"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <strong>OpenRouter</strong>
+                                <br>
+                                <small class="text-muted">API-Gateway für Claude 3.5 Sonnet</small>
+                                <br>
+                                <small class="text-muted">Verwendet für natürlichsprachige Anfragen-Analyse</small>
+                                <br>
+                                <a href="https://openrouter.ai/docs" target="_blank" class="small">
+                                    Dokumentation <i class="bi bi-box-arrow-up-right"></i>
+                                </a>
+                            </li>
+                        </ul>
+
+                        <h3 class="h6 mt-4">Fehlerbehandlung</h3>
+                        <ul class="list-unstyled">
+                            <li class="mb-3">
+                                <strong>API-Fehler</strong>
+                                <br>
+                                <small class="text-muted">- Automatische Wiederholungsversuche (bis zu 3x)</small>
+                                <br>
+                                <small class="text-muted">- Exponentielles Backoff zwischen Versuchen</small>
+                                <br>
+                                <small class="text-muted">- Detaillierte Fehlerprotokolle im Browser-Console</small>
+                            </li>
+                            <li class="mb-3">
+                                <strong>Cover-Bilder</strong>
+                                <br>
+                                <small class="text-muted">- Fallback zu Bootstrap Book-Icon bei fehlenden Covern</small>
+                                <br>
+                                <small class="text-muted">- Automatische Fehlerbehandlung bei Lade-Fehlern</small>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h2 class="h5 mb-0">
+                            <i class="bi bi-diagram-2 me-2"></i>Systemarchitektur
+                        </h2>
+                    </div>
+                    <div class="card-body">
+                        <svg width="100%" height="500" style="max-width: 800px; margin: 0 auto; display: block;">
+                            <!-- Definitionen für Pfeilspitzen und Farbverläufe -->
+                            <defs>
+                                <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+                                    <polygon points="0 0, 10 3.5, 0 7" fill="#666"/>
+                                </marker>
+                                <linearGradient id="clientGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#4a90e2;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#357abd;stop-opacity:1" />
+                                </linearGradient>
+                                <linearGradient id="apiGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#50c878;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#3da75c;stop-opacity:1" />
+                                </linearGradient>
+                                <linearGradient id="dbGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                                    <stop offset="0%" style="stop-color:#f0ad4e;stop-opacity:1" />
+                                    <stop offset="100%" style="stop-color:#d99a3e;stop-opacity:1" />
+                                </linearGradient>
+                            </defs>
+
+                            <!-- Frontend/Client -->
+                            <g transform="translate(50,50)">
+                                <rect width="200" height="100" rx="10" fill="url(#clientGrad)" />
+                                <text x="100" y="45" fill="white" text-anchor="middle" font-weight="bold">Frontend</text>
+                                <text x="100" y="70" fill="white" text-anchor="middle" font-size="12">HTML, CSS, JavaScript</text>
+                                <text x="100" y="85" fill="white" text-anchor="middle" font-size="12">Bootstrap 5</text>
+                            </g>
+
+                            <!-- KI-Layer -->
+                            <g transform="translate(300,50)">
+                                <rect width="200" height="100" rx="10" fill="url(#apiGrad)" />
+                                <text x="100" y="45" fill="white" text-anchor="middle" font-weight="bold">KI-Layer</text>
+                                <text x="100" y="70" fill="white" text-anchor="middle" font-size="12">OpenRouter API</text>
+                                <text x="100" y="85" fill="white" text-anchor="middle" font-size="12">Claude 3.5 Sonnet</text>
+                            </g>
+
+                            <!-- Externe APIs -->
+                            <g transform="translate(550,50)">
+                                <rect width="200" height="100" rx="10" fill="url(#dbGrad)" />
+                                <text x="100" y="45" fill="white" text-anchor="middle" font-weight="bold">Externe APIs</text>
+                                <text x="100" y="70" fill="white" text-anchor="middle" font-size="12">OpenLibrary API</text>
+                                <text x="100" y="85" fill="white" text-anchor="middle" font-size="12">TMDB API</text>
+                            </g>
+
+                            <!-- Datenfluss -->
+                            <g transform="translate(50,200)">
+                                <rect width="700" height="150" rx="10" fill="#f8f9fa" stroke="#dee2e6"/>
+                                <text x="350" y="30" text-anchor="middle" font-weight="bold">Datenfluss</text>
+                                <text x="350" y="60" text-anchor="middle" font-size="12">1. Nutzer gibt Suchanfrage ein</text>
+                                <text x="350" y="80" text-anchor="middle" font-size="12">2. KI analysiert und kategorisiert die Anfrage</text>
+                                <text x="350" y="100" text-anchor="middle" font-size="12">3. Passende API wird ausgewählt und abgefragt</text>
+                                <text x="350" y="120" text-anchor="middle" font-size="12">4. Ergebnisse werden im Frontend aufbereitet und angezeigt</text>
+                            </g>
+
+                            <!-- Protokolle -->
+                            <g transform="translate(50,350)">
+                                <rect width="700" height="100" rx="10" fill="#f8f9fa" stroke="#dee2e6"/>
+                                <text x="350" y="30" text-anchor="middle" font-weight="bold">Protokolle & Formate</text>
+                                <text x="175" y="60" text-anchor="middle" font-size="12">HTTPS</text>
+                                <text x="350" y="60" text-anchor="middle" font-size="12">REST APIs</text>
+                                <text x="525" y="60" text-anchor="middle" font-size="12">JSON</text>
+                            </g>
+
+                            <!-- Verbindungspfeile -->
+                            <g stroke="#666" stroke-width="2" fill="none" marker-end="url(#arrowhead)">
+                                <!-- Frontend zu KI -->
+                                <path d="M 250,100 L 300,100"/>
+                                <!-- KI zu APIs -->
+                                <path d="M 500,100 L 550,100"/>
+                                <!-- APIs zurück zu Frontend (unterhalb der Boxen) -->
+                                <path d="M 650,150 L 650,170 L 150,170 L 150,150"/>
+                            </g>
+                        </svg>
+
+                        <div class="mt-4">
+                            <h3 class="h6">Legende</h3>
+                            <ul class="list-unstyled small">
+                                <li><span class="badge" style="background-color: #4a90e2">■</span> Frontend-Komponenten</li>
+                                <li><span class="badge" style="background-color: #50c878">■</span> KI-Verarbeitung</li>
+                                <li><span class="badge" style="background-color: #f0ad4e">■</span> Externe Dienste</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bootstrap JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Documentation JS -->
+    <script>
+        // Funktion zum Laden und Anzeigen des System-Prompts
+        async function loadSystemPrompt() {
+            try {
+                const response = await fetch('/js/app.js');
+                const text = await response.text();
+                const match = text.match(/const SYSTEM_PROMPT = `([\s\S]*?)`;/);
+                if (match && match[1]) {
+                    document.getElementById('systemPrompt').textContent = match[1].trim();
+                }
+            } catch (error) {
+                console.error('Fehler beim Laden des System-Prompts:', error);
+                document.getElementById('systemPrompt').textContent = 'Fehler beim Laden des System-Prompts';
+            }
+        }
+
+        // System-Prompt laden, wenn die Seite geladen ist
+        document.addEventListener('DOMContentLoaded', loadSystemPrompt);
+    </script>
+</body>
+</html> 
