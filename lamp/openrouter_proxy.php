@@ -1,6 +1,6 @@
 <?php
 // CORS-Konfiguration: Passen Sie die Domain auf Ihre GitHub Pages an
-$allowedOrigin = 'https://<ihr-github-username>.github.io';
+$allowedOrigin = 'https://rstockm.github.io/';
 header('Access-Control-Allow-Origin: ' . $allowedOrigin);
 header('Access-Control-Allow-Methods: POST, GET, OPTIONS');
 header('Access-Control-Allow-Headers: Content-Type');
