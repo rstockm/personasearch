@@ -5,6 +5,9 @@ Willkommen zu PersonaSearch – einer modernen, leichtgewichtigen Web-App für p
 ## Prolog
 Bibliotheks‑ und Katalogdaten wie die von OpenLibrary sind über Jahre gereift und zeichnen sich durch ihre hohe Genauigkeit und verlässliche Kuratierung aus. Gleichzeitig verstecken sich hinter diesen Katalogen häufig mächtige, aber selten genutzte Experten‑Suchfunktionen, die vielen Nutzenden schwer zugänglich sind. PersonaSearch verbindet beides: Wir vertrauen auf die belastbare Exaktheit der Kataloge – und setzen KI nur dort ein, wo sie echten Mehrwert schafft, nämlich beim Übersetzen natürlicher Sprache in die passenden, strukturierten Suchanfragen. So bleibt die Ergebnisqualität hoch, während die Nutzung spürbar einfacher wird.
 
+<img width="1936" height="1244" alt="image" src="https://github.com/user-attachments/assets/80545e55-65d1-4d06-bc4a-b26bf3ba9ff6" />
+
+
 ## Live‑Demo
 - App: [rstockm.github.io/personasearch](https://rstockm.github.io/personasearch/)
 - Dokumentation: [rstockm.github.io/personasearch/docs.html](https://rstockm.github.io/personasearch/docs.html)
