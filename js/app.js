@@ -31,6 +31,28 @@ Liefere ein JSON-Objekt mit drei Feldern zurück:
 
 Antworte NUR mit dem JSON-Objekt, ohne weitere Erklärungen.`;
 
+    // Aktiver Prompt für die aktuelle Browser-Session (überschreibbar)
+    let activeSystemPrompt = SYSTEM_PROMPT;
+
+    // Elemente für Prompt-Bearbeitung
+    const promptModalEl = document.getElementById('promptModal');
+    const promptTextarea = document.getElementById('promptTextarea');
+    const savePromptButton = document.getElementById('savePromptButton');
+
+    if (promptModalEl && promptTextarea) {
+        promptModalEl.addEventListener('show.bs.modal', () => {
+            promptTextarea.value = activeSystemPrompt;
+        });
+    }
+
+    if (savePromptButton && promptModalEl && promptTextarea) {
+        savePromptButton.addEventListener('click', () => {
+            activeSystemPrompt = promptTextarea.value;
+            const instance = bootstrap.Modal.getOrCreateInstance(promptModalEl);
+            instance.hide();
+        });
+    }
+
     // API-Endpunkte für verschiedene Suchen
     const endpoints = {
         title: (query, sortByDate) => `https://openlibrary.org/search.json?title=${encodeURIComponent(query)}&limit=25${sortByDate ? '&sort=new' : ''}`,
@@ -106,7 +128,7 @@ Antworte NUR mit dem JSON-Objekt, ohne weitere Erklärungen.`;
                 body: JSON.stringify({
                     model: 'anthropic/claude-3.5-sonnet',
                     messages: [
-                        { role: 'system', content: SYSTEM_PROMPT },
+                        { role: 'system', content: activeSystemPrompt },
                         { role: 'user', content: query }
                     ]
                 })

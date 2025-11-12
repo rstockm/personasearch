@@ -122,6 +122,12 @@
                                         title="KI-Analyse anzeigen">
                                     <i class="bi bi-robot"></i>
                                 </button>
+                                <button type="button" class="btn btn-outline-secondary" 
+                                        id="editPromptButton"
+                                        data-bs-toggle="modal" data-bs-target="#promptModal"
+                                        title="System-Prompt bearbeiten">
+                                    <i class="bi bi-pencil"></i>
+                                </button>
                             </div>
                         </form>
                     </div>
@@ -139,6 +145,26 @@
                                 <div id="aiAnalysis" class="bg-light p-3 rounded">
                                     <p class="text-muted mb-0">Noch keine Analyse verfügbar. Bitte führen Sie zuerst eine Suche durch.</p>
                                 </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Prompt-Bearbeiten Modal -->
+                <div class="modal fade" id="promptModal" tabindex="-1">
+                    <div class="modal-dialog modal-lg">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">System-Prompt bearbeiten</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                            </div>
+                            <div class="modal-body">
+                                <textarea id="promptTextarea" class="form-control" rows="10" spellcheck="false"></textarea>
+                                <small class="text-muted">Gilt nur für diese Browser-Session. Nach Seiten-Reload wird der Standard-Prompt genutzt.</small>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Abbrechen</button>
+                                <button type="button" class="btn btn-primary" id="savePromptButton">Speichern</button>
                             </div>
                         </div>
                     </div>
